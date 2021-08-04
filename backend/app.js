@@ -26,15 +26,15 @@ app.use(helmet({
     contentSecurityPolicy: false
 }));
 
-app.use(
-    csrf({
-        cookie: {
-            secure: isProduction,
-            sameSite: isProduction && "Lax",
-            httpOnly: true
-        }
-    })
-);
+// app.use(
+//     csrf({
+//         cookie: {
+//             secure: isProduction,
+//             sameSite: isProduction && "Lax",
+//             httpOnly: true
+//         }
+//     })
+// );
 
 // Application routers
 app.use(routes);
