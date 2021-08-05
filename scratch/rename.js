@@ -3,20 +3,16 @@ const testDir = '/home/kevjinx/kevin/mulligan/scratch/test-images'
 
 const files = fs.readdirSync(testDir)
 
-
-const changeName = fileName => {
-	return testDir + '/' + 'test'
-}
+const regex = (/\d+/)
 
 for (let i = 0; i < files.length; i++ ) {
 	const file = files[i]
+	const id = regex.exec(file)
+	const oldFileName = `${testDir}/${file}`
+	const newFileName = `${testDir}/${id}.png`
 
-	const newFileName = `${testDir}/test${i}`
-
-	const oldPath = testDir + '/' + file
-
-	fs.rename(oldPath, newFileName, err => {
-		if (err) console.log(err);
+	fs.rename(oldFileName, newFileName, err => {
+		console.log(err);
 	})
 
 }
