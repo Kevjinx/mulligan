@@ -5,15 +5,15 @@ const app = require("../app");
 
 chai.use(chaiHttp);
 
-describe("API Routes", function() {
+describe("API Routes", function(done) {
     let requester;
 
     before(async function() {
-        requester = await chai.request(app).keepOpen();
+        requester = chai.request(app).keepOpen();
     });
 
     describe("Login Route", function() {
-        it("Should successfully login with the correct credentials", async function() {
+        describe("Should successfully login with the correct credentials", function() {
             const demoCredentials = {
                 credential: 'demo@user.io',
                 password: 'password',
@@ -25,15 +25,27 @@ describe("API Routes", function() {
                 email: 'demo@user.io',
             };
 
-            const res = await requester.post('/api/session')
-                                 .type('json')
-                                 .send(JSON.stringify(demoCredentials));
-            
-            expect(res).to.have.status(200);
+            let response;
+
+            before(async function() {
+                response = await requester.post('/api/session')
+                                          .type('json')
+                                          .send(JSON.stringify(demoCredentials));
+            });
+
+            it("Returns status code 200", function() {
+                expect(response).to.have.status(200);
+            });
+
+            it("Sends back the correct user information", function() {
+                const user = response.body.user;
+                expect(user).to.include(demoInformation);
+            });
+
         });
     });
 
     after(async function() {
         await requester.close();
-    })
+    });
 });

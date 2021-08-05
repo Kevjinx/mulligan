@@ -9,7 +9,7 @@
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
     "start:production": "node ./bin/www",
-    "test": "mocha --recursive"
+    "test": "NODE_ENV=test dotenv mocha --recursive --exit"
   },
   "keywords": [],
   "author": "",
