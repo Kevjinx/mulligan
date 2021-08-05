@@ -6,7 +6,7 @@ const app = require("../app");
 
 chai.use(chaiHttp);
 
-describe("API Routes", function(done) {
+describe("API Routes", function() {
     let requester;
     let response;
 
@@ -42,6 +42,10 @@ describe("API Routes", function(done) {
                 expect(user).to.include(demoInformation);
             });
 
+            it("Sets a JWT token on the cookie", function() {
+                expect(response).to.have.cookie('token');
+            });
+
         });
 
         describe("Should fail to login with incorrect credentials", function() {
@@ -61,6 +65,14 @@ describe("API Routes", function(done) {
             it("Provides an error to render on the page", function() {
                 const body = response.body;
                 expect(body.errors).to.exist.and.not.be.empty;
+            });
+
+            it("Does not send back any user information", function() {
+                expect(response.body).to.not.have.property("user");
+            })
+
+            it("Does not set a JWT token cookie", function() {
+                expect(response).to.not.have.cookie('token');
             });
         })
     });

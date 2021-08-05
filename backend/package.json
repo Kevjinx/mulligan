@@ -9,7 +9,7 @@
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
     "start:production": "node ./bin/www",
-    "test": "NODE_ENV=test dotenv mocha --recursive --exit"
+    "test": "NODE_ENV=test dotenv nyc mocha --recursive --exit"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +37,7 @@
     "chai-http": "^4.3.0",
     "dotenv-cli": "^4.0.0",
     "mocha": "^9.0.3",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "nyc": "^15.1.0"
   }
 }
