@@ -15,10 +15,9 @@ const app = express();
 
 // Application middlewares, each is evaluated in the order that they are attached.
 // Dont log requests and other information if the environment is test, only the test information should display.
-// if(environment !== 'test') {
-//     app.use(morgan('dev'));
-// }
-app.use(morgan('dev'));
+if(environment !== 'test') {
+    app.use(morgan('dev'));
+}
 app.use(cookieParser());
 app.use(express.json());
 
@@ -62,10 +61,9 @@ app.use((err, req, res, next) => {
 
 app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    // if(environment !== "test") {
-    //     console.error(err);
-    // }
-    console.error(err);
+    if(environment !== "test") {
+        console.error(err);
+    }
     res.json({
         title: err.title || 'Server Error',
         message: err.message,
