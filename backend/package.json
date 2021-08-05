@@ -8,7 +8,8 @@
     "sequelize-cli": "sequelize-cli",
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
-    "start:production": "node ./bin/www"
+    "start:production": "node ./bin/www",
+    "test": "NODE_ENV=test dotenv nyc mocha --recursive --exit"
   },
   "keywords": [],
   "author": "",
@@ -32,7 +33,11 @@
     "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "dotenv-cli": "^4.0.0",
-    "nodemon": "^2.0.12"
+    "mocha": "^9.0.3",
+    "nodemon": "^2.0.12",
+    "nyc": "^15.1.0"
   }
 }

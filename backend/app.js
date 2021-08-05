@@ -14,7 +14,10 @@ const isProduction = environment === "production";
 const app = express();
 
 // Application middlewares, each is evaluated in the order that they are attached.
-app.use(morgan('dev'));
+// Dont log requests and other information if the environment is test, only the test information should display.
+if(environment !== 'test') {
+    app.use(morgan('dev'));
+} 
 app.use(cookieParser());
 app.use(express.json());
 
@@ -26,15 +29,15 @@ app.use(helmet({
     contentSecurityPolicy: false
 }));
 
-app.use(
-    csrf({
-        cookie: {
-            secure: isProduction,
-            sameSite: isProduction && "Lax",
-            httpOnly: true
-        }
-    })
-);
+// app.use(
+//     csrf({
+//         cookie: {
+//             secure: isProduction,
+//             sameSite: isProduction && "Lax",
+//             httpOnly: true
+//         }
+//     })
+// );
 
 // Application routers
 app.use(routes);
@@ -58,7 +61,9 @@ app.use((err, req, res, next) => {
 
 app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    console.error(err);
+    if(environment !== "test") {
+        console.error(err);
+    }
     res.json({
         title: err.title || 'Server Error',
         message: err.message,
