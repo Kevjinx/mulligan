@@ -9,7 +9,7 @@
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
     "start:production": "node ./bin/www",
-    "test": "NODE_ENV=test dotenv nyc cover mocha --report lcovonly --recursive --exit && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "test": "NODE_ENV=test dotenv nyc mocha --recursive --exit"
   },
   "keywords": [],
   "author": "",

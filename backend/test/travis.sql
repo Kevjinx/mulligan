@@ -1,4 +1,4 @@
-CREATE USER mulligan_app WITH PASSWORD 'password';
+CREATE USER IF NOT EXISTS mulligan_app WITH PASSWORD 'password';
 CREATE DATABASE IF NOT EXISTS mulligan_development WITH OWNER mulligan_app;
 
 CREATE TABLE IF NOT EXISTS Users (
