@@ -1,12 +1,14 @@
 const { expect } = require("chai");
 const chai = require("chai");
 const chaiHttp = require("chai-http");
+const { response } = require("express");
 const app = require("../app");
 
 chai.use(chaiHttp);
 
 describe("API Routes", function(done) {
     let requester;
+    let response;
 
     before(async function() {
         requester = chai.request(app).keepOpen();
@@ -25,8 +27,6 @@ describe("API Routes", function(done) {
                 email: 'demo@user.io',
             };
 
-            let response;
-
             before(async function() {
                 response = await requester.post('/api/session')
                                           .type('json')
@@ -43,6 +43,26 @@ describe("API Routes", function(done) {
             });
 
         });
+
+        describe("Should fail to login with incorrect credentials", function() {
+            before(async function() {
+                response = await requester.post('/api/session')
+                                          .type('json')
+                                          .send(JSON.stringify({
+                                              credential: "demo@user.io",
+                                              password: "wrongpassword",
+                                          }));
+            });
+
+            it("Returns with status code 401", function() {
+                expect(response).to.have.status(401);
+            });
+
+            it("Provides an error to render on the page", function() {
+                const body = response.body;
+                expect(body.errors).to.exist.and.not.be.empty;
+            });
+        })
     });
 
     after(async function() {
