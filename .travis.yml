@@ -4,6 +4,8 @@ node_js: 14
 services:
   - postgresql
 
+addons:
+  postgresql: "12.7"
+
 before_script:
-  - psql -c 'create database mulligan;'
-  - psql -c ''
+  - psql -U postgres < backend/test/travis.sql
