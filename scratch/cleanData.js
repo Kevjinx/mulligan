@@ -1,16 +1,9 @@
 //converting the raw exported JSON file of card data into cleaner version to seed database
 
 
-<<<<<<< HEAD
 const exampleCards = {
 	id: 100000,
 	name: 'varcharName',
-=======
-const formattedCard = {
-	id: 100000,
-	name: 'varcharName',
-	info: 'text text text text',
->>>>>>> testStructure
 	strength: 7,
 	provision: 8,
 	armor: 3,
@@ -23,7 +16,6 @@ const formattedCard = {
 }
 
 
-<<<<<<< HEAD
 const convertedCard = {
 	id: 100000,
 	name: 'varcharName',
@@ -38,20 +30,12 @@ const convertedCard = {
 	setId: 3
 }
 
-=======
->>>>>>> testStructure
 const cardJson = require('../backend/db/card-api/cards-v3-low.json')
 
 const exampleCard = cardJson[200147]
 console.log(exampleCard);
 
-<<<<<<< HEAD
 const example = {
-=======
-
-//convert exampleCardData into the format of formattedCard example
-const exampleCardData = {
->>>>>>> testStructure
   armor: 0,
   artist: 'Anna Podedworna',
   cardType: 'Unit',
