@@ -8,7 +8,10 @@ addons:
   postgresql: "9.6"
 
 before_script:
-  - psql < backend/test/travis.sql
+  - psql -c "create user mulligan_app with password 'password';"
+  - npm run sequelize db:create
+  - npm run sequelize db:migrate
+  - npm run sequelize db:seed:all
 
 env:
   PORT=5000
