@@ -8,4 +8,5 @@ addons:
   postgresql: "12.7"
 
 before_script:
-  - psql -U postgres < backend/test/travis.sql
+  - psql < backend/test/travis.sql
+  
