@@ -1,5 +1,5 @@
 const fs = require('fs')
-const testDir = '/home/kevjinx/kevin/mulligan/scratch/test-images'
+const testDir = '/home/kevjinx/kevin/mulligan/frontend/src/gwent-low'
 
 const files = fs.readdirSync(testDir)
 
