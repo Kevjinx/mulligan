@@ -1,40 +1,4 @@
-//converting the raw exported JSON file of card data into cleaner version to seed database
-const cardJson = require('../backend/db/card-api/cards-v3-low.json')
-
-
-// need to get all of the faction, type, category, keywords,rarity,set
-// iterate through all of the cards in JSON, and for each different faction, type, etc, add to the object
-
-const refObj = {
-  factionArr: [],
-  typeArr: [],
-  categoryArr: [],
-  keywordArr: [],
-  rarityArr: [],
-  setArr: [],
-}
-
-for (card in cardJson) {
-
-  if (!refObj.factionArr.includes(cardJson[card].faction)) refObj.factionArr.push(cardJson[card].faction)
-  if (!refObj.typeArr.includes(cardJson[card].cardType)) refObj.typeArr.push(cardJson[card].cardType)
-  if (!refObj.rarityArr.includes(cardJson[card].rarity)) refObj.rarityArr.push(cardJson[card].rarity)
-  if (!refObj.setArr.includes(cardJson[card].set)) refObj.setArr.push(cardJson[card].set)
-
-  if (cardJson[card].keywords) {
-    cardJson[card].keywords.forEach(keyword => {
-      if (!refObj.keywordArr.includes(keyword)) refObj.keywordArr.push(keyword)
-    });
-  }
-
-  if (cardJson[card].categories) {
-    cardJson[card].categories.forEach(category => {
-      if (!refObj.categoryArr.includes(category)) refObj.categoryArr.push(category)
-    })
-  }
-}
-
-const references = {
+module.exports = {
   factionArr: [
     'Neutral',
     'Monster',
