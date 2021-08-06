@@ -1,6 +1,20 @@
 const cardJson = require('../backend/db/card-api/cards-v3-low.json')
 
 const exampleCard = cardJson[200147]
+const exampleCards = {
+	id: 100000,
+	name: 'varcharName',
+	strength: 7,
+	provision: 8,
+	armor: 3,
+	factionId: 23,
+	typeId: 3,
+	categoryId: [12, 3, 2],
+	keyWordId: [2, 5],
+	rarityId: 2,
+	setId: 3
+}
+
 
 const example = {
   armor: 0,
