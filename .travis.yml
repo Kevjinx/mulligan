@@ -9,9 +9,7 @@ addons:
 
 before_script:
   - psql -c "create user mulligan_app with password 'password';"
-  - npm run sequelize db:create
-  - npm run sequelize db:migrate
-  - npm run sequelize db:seed:all
+  - npm run db:init
 
 after_success:
   - npm run coverage
