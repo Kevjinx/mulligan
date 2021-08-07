@@ -12,9 +12,8 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(250)
       },
-      cardId: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER),
-        references: { model: 'Cards'}
+      userId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

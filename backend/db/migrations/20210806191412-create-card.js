@@ -30,12 +30,6 @@ module.exports = {
       type: {
         type: Sequelize.STRING
       },
-      categoryId: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER)
-      },
-      keywordId: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER)
-      },
       rarityId: {
         type: Sequelize.STRING
       },

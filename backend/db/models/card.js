@@ -6,22 +6,16 @@ module.exports = (sequelize, DataTypes) => {
     strength: DataTypes.INTEGER,
     provision: DataTypes.INTEGER,
     armor: DataTypes.INTEGER,
-    factionId: DataTypes.INTEGER,
-    typeId: DataTypes.INTEGER,
-    categoryId: DataTypes.ARRAY(Sequelize.INTEGER),
-    keywordId: DataTypes.ARRAY(Sequelize.INTEGER),
-    rarityId: DataTypes.INTEGER,
-    setId: DataTypes.INTEGER
+    faction: DataTypes.STRING,
+    type: DataTypes.STRING,
+    rarity: DataTypes.STRING,
+    set: DataTypes.STRING
   }, {});
   Card.associate = function(models) {
     // associations can be defined here
-    Card.belongsTo(models.Faction, { foreignKey: 'factionId'});
-    Card.belongsTo(models.Type, { foreignKey: 'typeId'});
-    Card.belongsTo(models.Category, { foreignKey: 'categoryId'});
-    Card.belongsTo(models.Keyword, { foreignKey: 'keywordId'});
-    Card.belongsTo(models.Rarity, { foreignKey: 'rarityId'});
-    Card.belongsTo(models.Set, { foreignKey: 'setId'});
-
+    Card.belongsToMany(models.Category, { through: 'cardsCategories', foreignKey: 'cardId'})
+    Card.belongsToMany(models.Keyword, { through: 'cardsKeywords', foreignKey: 'cardId'})
+    Card.belongsToMany(models.Deck, { through: 'decksCards', foreignKey: 'cardId'})
   };
   return Card;
 };

@@ -22,12 +22,6 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false
       },
-      avatarUrl: {
-        type: Sequelize.STRING(1000),
-      },
-      deckId: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER)
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
