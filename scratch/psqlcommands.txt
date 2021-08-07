@@ -7,3 +7,4 @@ npx sequelize model:generate --name Set --attributes name:string
 npx sequelize model:generate --name Faction --attributes name:string
 npx sequelize model:generate --name Category --attributes name:string
 npx sequelize model:generate --name Rarity --attributes name:string
+npx sequelize model:generate --name Deck --attributes name:string,userId:integer,cardId:integer

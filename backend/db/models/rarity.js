@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Rarity.associate = function(models) {
     // associations can be defined here
+    Rarity.hasMany(models.Card, { foreignKey: 'rarityId'})
   };
   return Rarity;
 };

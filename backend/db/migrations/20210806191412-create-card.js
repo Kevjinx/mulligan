@@ -12,6 +12,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
+      info: {
+        type: Sequelize.TEXT
+      },
       strength: {
         type: Sequelize.INTEGER
       },
@@ -24,7 +27,6 @@ module.exports = {
       factionId: {
         references: { model: 'Factions' },
         type: Sequelize.INTEGER
-
       },
       typeId: {
         references: { model: 'Types' },
@@ -32,11 +34,11 @@ module.exports = {
       },
       categoryId: {
         references: { model: 'Categories' },
-        type: Sequelize.INTEGER
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       keywordId: {
         references: { model: 'Keywords' },
-        type: Sequelize.INTEGER
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       rarityId: {
         references: { model: 'Rarities' },

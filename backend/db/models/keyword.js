@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Keyword.associate = function(models) {
     // associations can be defined here
+    Keyword.hasMany(models.Card, { foreignKey: 'keywordId'})
   };
   return Keyword;
 };
