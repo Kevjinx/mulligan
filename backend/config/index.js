@@ -7,6 +7,12 @@ module.exports = {
         database: process.env.DB_DATABASE,
         host: process.env.DB_HOST
     },
+    testDb: {
+        username: process.env.TESTDB_USERNAME,
+        password: process.env.TESTDB_PASSWORD,
+        database: process.env.TESTDB_DATABASE,
+        host: process.env.TESTDB_HOST
+    },
     jwtConfig: {
         secret: process.env.JWT_SECRET,
         expiresIn: process.env.JWT_EXPIRES_IN,

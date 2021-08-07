@@ -6,6 +6,12 @@ const password = db.password;
 const database = db.database;
 const host = db.host;
 
+const testDb = config.testDb;
+const testUsername = testDb.username;
+const testPassword = testDb.password;
+const testDatabase = testDb.database;
+const testHost = testDb.host;
+
 module.exports = {
   development: {
     username,
@@ -16,10 +22,10 @@ module.exports = {
     seederStorage: 'sequelize',
   },
   test: {
-    username,
-    password,
-    database,
-    host,
+    username: testUsername,
+    password: testPassword,
+    database: testDatabase,
+    host: testHost,
     dialect: 'postgres',
     seederStorage: 'sequelize',
     logging: false

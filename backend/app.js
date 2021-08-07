@@ -17,7 +17,7 @@ const app = express();
 // Dont log requests and other information if the environment is test, only the test information should display.
 if(environment !== 'test') {
     app.use(morgan('dev'));
-} 
+}
 app.use(cookieParser());
 app.use(express.json());
 

@@ -1,2 +1,28 @@
 language: node_js
 node_js: 14
+
+services:
+  - postgresql
+
+addons:
+  postgresql: "9.6"
+
+before_script:
+  - psql -c "create user mulligan_app with password 'password';"
+  - npm run db:init
+
+after_success:
+  - npm run coverage
+
+env:
+  PORT=5000
+  DB_USER=mulligan_app
+  DB_DATABASE=mulligan_development
+  DB_PASSWORD=password 
+  DB_HOST=localhost
+  TESTDB_USER=mulligan_app
+  TESTDB_DATABASE=mulligan_test
+  TESTDB_PASSWORD=password
+  TESTDB_HOST=localhost
+  JWT_SECRET=secret 
+  JWT_EXPIRES_IN=608000
