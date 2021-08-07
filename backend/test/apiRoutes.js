@@ -73,7 +73,61 @@ describe("API Routes", function () {
 			it("Does not set a JWT token cookie", function () {
 				expect(response).to.not.have.cookie('token');
 			});
-		})
+		});
+	});
+
+	describe("Signup Route", function() {
+
+		describe("When signing up with correct form data", function() {
+			const newUserInfo = {
+				username: 'test user',
+				email: 'test@test.io',
+				password: 'password',
+			};
+	
+
+			before(async function() {
+				response = await requester
+								  .post('/api/users')
+								  .type('json')
+								  .send(JSON.stringify(newUserInfo));
+			});
+
+			it("Returns status code 200", function() {
+				expect(response).to.have.status(200);
+			});
+
+			it("Returns the information of the newly created user", function() {
+				const body = response.body;
+				expect(body.user).to.include({
+					username: 'test user',
+					email: 'test@test.io',
+				});
+			});
+
+			it("Sets a JWT token cookie", function() {
+				expect(response).to.have.cookie("token");
+			});
+		});
+
+		describe("When signing up with an incorrect username", function() {
+			const newUserInfo = {
+				username: '',
+				email: 'test@test.io',
+				password: 'password',
+			};
+
+			before(async function() {
+				response = await requester
+								  .post('/api/users')
+								  .type('json')
+								  .send(JSON.stringify(newUserInfo));
+			});
+
+			it("Returns with status code 400", function() {
+				expect(response).to.have.status(400);
+			});
+		});
 	});
 
 	after(async function () {

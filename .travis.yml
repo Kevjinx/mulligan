@@ -9,9 +9,7 @@ addons:
 
 before_script:
   - psql -c "create user mulligan_app with password 'password';"
-  - npm run sequelize db:create
-  - npm run sequelize db:migrate
-  - npm run sequelize db:seed:all
+  - npm run db:init
 
 after_success:
   - npm run coverage
@@ -22,5 +20,9 @@ env:
   DB_DATABASE=mulligan_development
   DB_PASSWORD=password 
   DB_HOST=localhost
+  TESTDB_USER=mulligan_app
+  TESTDB_DATABASE=mulligan_test
+  TESTDB_PASSWORD=password
+  TESTDB_HOST=localhost
   JWT_SECRET=secret 
   JWT_EXPIRES_IN=608000
