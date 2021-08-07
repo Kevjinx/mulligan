@@ -1,5 +1,5 @@
 'use strict';
-const { Validator } = require("sequelize");
+const { Validator, Sequelize } = require("sequelize");
 const bcrypt = require("bcryptjs");
 
 module.exports = (sequelize, DataTypes) => {
@@ -30,13 +30,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       },
     },
-    avatarUrl: {
-      type: DataTypes.STRING,
-    },
+    avatarUrl: DataTypes.STRING,
+
+    deckId: DataTypes.ARRAY(Sequelize.INTEGER),
   }, {
     defaultScope: {
       attributes: {
-        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
+        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt', 'deckId']
       },
     },
     scopes: {
