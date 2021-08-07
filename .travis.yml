@@ -20,5 +20,9 @@ env:
   DB_DATABASE=mulligan_development
   DB_PASSWORD=password 
   DB_HOST=localhost
+  TESTDB_USER=mulligan_app
+  TESTDB_DATABASE=mulligan_test
+  TESTDB_PASSWORD=password
+  TESTDB_HOST=localhost
   JWT_SECRET=secret 
   JWT_EXPIRES_IN=608000
