@@ -24,11 +24,11 @@ module.exports = {
       armor: {
         type: Sequelize.INTEGER
       },
-      factionId: {
-        type: Sequelize.INTEGER
+      faction: {
+        type: Sequelize.STRING
       },
-      typeId: {
-        type: Sequelize.INTEGER
+      type: {
+        type: Sequelize.STRING
       },
       categoryId: {
         type: Sequelize.ARRAY(Sequelize.INTEGER)
@@ -37,10 +37,10 @@ module.exports = {
         type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       rarityId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       setId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

@@ -12,10 +12,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(250)
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Users' }
-      },
       cardId: {
         type: Sequelize.ARRAY(Sequelize.INTEGER),
         references: { model: 'Cards'}

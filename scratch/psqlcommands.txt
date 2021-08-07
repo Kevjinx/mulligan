@@ -13,3 +13,4 @@ npx sequelize model:generate --name Deck --attributes name:string,userId:integer
 npx sequelize seed:generate --name cardSeedtest1
 
 npx sequelize db:migrate
+npx sequelize db:migrate:undo:all

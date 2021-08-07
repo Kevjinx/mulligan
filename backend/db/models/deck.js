@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Deck.associate = function(models) {
     // associations can be defined here
-    Deck.belongsTo(models.Card, { foreignKey: 'cardId'});
-    //! may need to change the association to hasMany for importing/copying other user's decks to own deck lists
-    Deck.belongsTo(models.userId, { foreignKey: 'userId'})
+    Deck.hasMany(models.Card, { foreignKey: 'cardId'});
+
+    Deck.hasMany(models.userId, { foreignKey: 'deckId'})
   };
   return Deck;
 };
