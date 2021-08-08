@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     faction: DataTypes.STRING,
     type: DataTypes.STRING,
     rarity: DataTypes.STRING,
-    set: DataTypes.STRING
+    set: DataTypes.STRING,
+    imageId: DataTypes.INTEGER
   }, {});
   Card.associate = function(models) {
     // associations can be defined here

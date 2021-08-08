@@ -32,6 +32,7 @@ const script = () => {
 
 	for (cardId in cardJson) {
 		const card = cardJson[cardId]
+		card.imageId = cardId
 		card.createdAt = new Date()
 		card.updatedAt = new Date()
 		cardSeeder.push(card)
