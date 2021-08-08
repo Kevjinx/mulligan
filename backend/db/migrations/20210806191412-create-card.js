@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING
       },
       info: {
@@ -30,10 +30,10 @@ module.exports = {
       type: {
         type: Sequelize.STRING
       },
-      rarityId: {
+      rarity: {
         type: Sequelize.STRING
       },
-      setId: {
+      set: {
         type: Sequelize.STRING
       },
       createdAt: {

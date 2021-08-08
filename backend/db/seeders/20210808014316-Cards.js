@@ -1,6 +1,6 @@
 'use strict';
 
-const cardSeed = require('../card-api/cards-v3-low.json')
+const cardSeed = require('../card-api/cardSeeder.json')
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
