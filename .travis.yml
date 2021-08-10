@@ -13,7 +13,7 @@ before_script:
 
 after_success:
   - npm run coverage
-
+  - npm run coverage:send
 env:
   PORT=5000
   DB_USER=mulligan_app
