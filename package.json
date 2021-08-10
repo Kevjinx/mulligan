@@ -22,15 +22,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KagenLH/authenticate-me-individual.git"
+    "url": "git+https://github.com/Kevjinx/mulligan.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KagenLH/authenticate-me-individual/issues"
+    "url": "https://github.com/Kevjinx/mulligan/issues"
   },
-  "homepage": "https://github.com/KagenLH/authenticate-me-individual#readme",
+  "homepage": "https://github.com/Kevjinx/mulligan#readme",
   "devDependencies": {
     "chai": "^4.3.4",
     "coveralls": "^3.1.1",
