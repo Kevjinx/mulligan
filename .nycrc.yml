@@ -1,0 +1,5 @@
+exclude:
+  - "backend/db/migrations/*"
+  - "backend/db/seeders/*"
+  - "backend/test/*"
+  - "frontend/test/*"
