@@ -26,7 +26,7 @@
     "start:development": "nodemon -r dotenv/config ./bin/www",
     "start:production": "node ./bin/www",
     "test": "NODE_ENV=test dotenv --report-dir=./coverage mocha --recursive --exit ; npm run --silent testdb:reset",
-    "coverage": "nyc report --reporter=text-lcov"
+    "coverage": "nyc report --reporter=lcov"
   },
   "keywords": [],
   "author": "",

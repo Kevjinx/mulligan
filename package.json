@@ -17,8 +17,8 @@
     "test:backend": "npm test --prefix backend",
     "test:frontend": "npm test --prefix frontend",
     "coverage:generate": "nyc --silent --reporter=text npm run test:backend && nyc --silent --reporter=text --no-clean npm run test:frontend",
-    "coverage": "npm run coverage:generate && nyc report --reporter=text --reporter=lcov",
-    "coverage:send": "nyc report --reporter=lcov | coveralls"
+    "coverage": "npm run coverage:generate && nyc report --reporter=text --reporter=html",
+    "coverage:send": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
