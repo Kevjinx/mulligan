@@ -1,5 +1,8 @@
 exclude:
+  - "backend/config/"
   - "backend/db/migrations/*"
   - "backend/db/seeders/*"
+  - "backend/routes/index.js"
+  - "backend/db/models/index.js"
   - "backend/test/*"
   - "frontend/test/*"

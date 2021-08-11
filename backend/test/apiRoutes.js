@@ -10,7 +10,7 @@ describe("API Routes", function () {
 	let response;
 
 	before(async function () {
-		requester = chai.request(app).keepOpen();
+		requester = chai.request.agent(app)
 	});
 
 	describe("Login Route", function () {
@@ -43,6 +43,10 @@ describe("API Routes", function () {
 
 			it("Sets a JWT token on the cookie", function () {
 				expect(response).to.have.cookie('token');
+			});
+
+			after(async function() {
+				await requester.delete('/api/session');
 			});
 
 		});
@@ -108,6 +112,10 @@ describe("API Routes", function () {
 			it("Sets a JWT token cookie", function() {
 				expect(response).to.have.cookie("token");
 			});
+
+			after(async function() {
+				await requester.delete('/api/session');
+			})
 		});
 
 		describe("When signing up with an incorrect username", function() {
@@ -127,6 +135,80 @@ describe("API Routes", function () {
 			it("Returns with status code 400", function() {
 				expect(response).to.have.status(400);
 			});
+
+			it("Does not set a JWT token cookie", function() {
+				expect(response).to.not.have.cookie('token');
+			});
+		});
+	});
+
+	describe("Logout Route", function() {
+		const demoCredentials = {
+			credential: 'demo@user.io',
+			password: 'password',
+		};
+
+		before(async function() {
+			response = await requester
+							 .post('/api/session')
+							 .type('json')
+							 .send(JSON.stringify(demoCredentials));
+
+			response = await requester.delete('/api/session');
+		});
+
+		it("Removes the JWT token cookie", function() {
+			expect(response).to.not.have.cookie('token');
+		});
+	});
+
+	describe("Restore user route", function() {
+		describe("When signed in with a valid JWT", function() {
+			const demoCredentials = {
+				credential: 'demo@user.io',
+				password: 'password',
+			};
+
+			before(async function() {
+				response = await requester
+								 .post('/api/session')
+								 .type('json')
+								 .send(JSON.stringify(demoCredentials));
+			});
+
+			it("Returns the logged in user information", async function() {
+				expect(response).to.have.cookie('token');
+
+				const newResponse = await requester.get('/api/session');
+
+				expect(newResponse.body.user).to.exist;
+				expect(newResponse.body.user).to.include({
+					username: 'Demo Manager',
+					email: 'demo@user.io',
+				});
+			});
+
+			after(async function() {
+				await requester.delete('/api/session');
+			});
+		});
+
+		describe("When not signed in with a valid JWT", function() {
+			it("Returns a null user", async function() {
+				const failedResponse = await requester.get('/api/session');
+
+				expect(failedResponse.body.user).to.be.null;
+			})
+		})
+	});
+
+	describe("Routes that don't exist", function() {
+		before(async function () {
+			response = await requester.get('/api/unknown');
+		});
+
+		it("Returns with status code 404", function() {
+			expect(response).to.have.status(404);
 		});
 	});
 
