@@ -1,7 +1,0 @@
--- get card ids from
--- - [ ] faction
--- - [ ] crafting cost
--- - [ ] card type
--- - [ ] color
--- - [ ] provision
--- - [ ] card set
